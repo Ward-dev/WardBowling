@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WardBowling
+﻿namespace WardBowling
 {
-   public class Game
+    public class Game
     {
         private int[] frame = new int[10];
         private int[] throws = new int[21];
@@ -22,7 +16,7 @@ namespace WardBowling
             return throws[throwNumber] + throws[throwNumber + 1] == 10;
         }
 
-        public void Throw(int amountOfPins) 
+        public void Throw(int amountOfPins)
         {
             throws[currentThrow] = amountOfPins;
             currentThrow++;
@@ -38,7 +32,7 @@ namespace WardBowling
             {
                 if (Strike(throwNumber))
                 {
-                    
+
                     score += 10 + throws[throwNumber + 1] + throws[throwNumber + 2];
                     throwNumber++;
                 }
