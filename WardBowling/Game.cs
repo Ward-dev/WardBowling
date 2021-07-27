@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WardBowling
 {
-    class Game
+   public class Game
     {
         private int[] frame = new int[10];
         private int[] throws = new int[21];
@@ -38,12 +38,13 @@ namespace WardBowling
             {
                 if (Strike(throwNumber))
                 {
+                    
                     score += 10 + throws[throwNumber + 1] + throws[throwNumber + 2];
                     throwNumber++;
                 }
                 else if (Spare(throwNumber))
                 {
-                    score += 10 + throws[throwNumber + 1];
+                    score += 10 + throws[throwNumber + 2];
                     throwNumber += 2;
                 }
                 else
