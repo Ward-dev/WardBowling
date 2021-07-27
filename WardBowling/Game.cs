@@ -9,7 +9,7 @@ namespace WardBowling
     class Game
     {
         private int[] frame = new int[10];
-        private int[] throws = new int[20];
+        private int[] throws = new int[21];
         int currentThrow = 0;
 
         public bool Strike(int throwNumber)
@@ -25,6 +25,35 @@ namespace WardBowling
         public void Throw(int amountOfPins) 
         {
             throws[currentThrow] = amountOfPins;
+            currentThrow++;
+        }
+
+        public int CalculateTotalScore()
+        {
+            int throwNumber = 0;
+            int score = 0;
+
+            //Iterate through all 10 frames
+            for (int i = 0; i < 10; i++)
+            {
+                if (Strike(throwNumber))
+                {
+                    score += 10 + throws[throwNumber + 1] + throws[throwNumber + 2];
+                    throwNumber++;
+                }
+                else if (Spare(throwNumber))
+                {
+                    score += 10 + throws[throwNumber + 1];
+                    throwNumber += 2;
+                }
+                else
+                {
+                    score += throws[throwNumber] + throws[throwNumber + 1];
+                    throwNumber += 2;
+                }
+            }
+
+            return score;
         }
 
 
